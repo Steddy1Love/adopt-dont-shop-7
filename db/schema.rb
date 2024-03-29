@@ -24,9 +24,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_02_24_213052) do
     t.datetime "updated_at", null: false
     t.index ["shelter_id"], name: "index_pets_on_shelter_id"
   end
-
+Insert field afterDeletebinaryblobbooleandatedatetimedecimalfloatintegerstringtexttimetimestampvarchar
   create_table "shelters", force: :cascade do |t|
-    t.boolean "foster_program"
+    t.boolean "foster_progInsert field afterDeletebinaryblobbooleandatedatetimedecimalfloatintegerstringtexttimetimestampvarcharram"
     t.string "name"
     t.string "city"
     t.integer "rank"
