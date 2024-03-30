@@ -29,3 +29,19 @@ Pet.create!(name: "Bean", age: 2, breed: "Poodle", adoptable: true, shelter_id: 
 Pet.create!(name: "Apollo", age: 1, breed: "Golden Retriever", adoptable: true, shelter_id: 2)
 Pet.create!(name: "Charlie", age: 10, breed: "German Shepherd", adoptable: true, shelter_id: 1)
 puts "Pets Created"
+
+puts "Creating Applications"
+sleep(1)
+Application.create!(name: "John Wing", street_address: "1234 Long St.", city: "Star", state: "CA", zip_code: "12545", description: "I love dogs always", status: "In Progress")
+Application.create!(name: "Sarah Foster", street_address: "123334 Apple St.", city: "Vegas", state: "NV", zip_code: "90042", description: "I have two dogs already", status: "Accepted")
+Application.create!(name: "Michael Jordan", street_address: "559 Strawberry Ln.", city: "Eugene", state: "OR", zip_code: "76851", description: "I foster puppies", status: "Pending")
+puts "Applications created"
+
+puts "Linking Pets to Applications"
+sleep(1)
+ApplicationPet.create!(pet_id: 1, application_id: 2)
+ApplicationPet.create!(pet_id: 9, application_id: 3)
+ApplicationPet.create!(pet_id: 7, application_id: 1)
+ApplicationPet.create!(pet_id: 4, application_id: 1)
+ApplicationPet.create!(pet_id: 3, application_id: 2)
+puts "Applications linked"
