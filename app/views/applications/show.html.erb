@@ -1,0 +1,16 @@
+<h1><%= @applicaion.id %></h1>
+
+<h3>Applicant name: <%= @application.name %></h3><br>
+<p>Address: <%= @application.street_address %></p>
+<p>City: <%= @application.city %></p>
+<p>State: <%= @application.state %></p>
+<p>Zip: <%= @application.zip_code %></p><br>
+
+<h3>Why this home will be a home for the pets</h3>
+<p><%= @application.description %></p>
+<h3>Names of pets applying for:</h3>
+<%= link_to 'text', path %><br>
+
+<h3>Application Status:</h3>
+<%= @application.status %>
+
