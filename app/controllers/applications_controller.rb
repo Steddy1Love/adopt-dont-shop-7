@@ -1,4 +1,8 @@
 class ApplicationsController < ApplicationController
+  def index
+    @all_applications = Application.all
+  end  
+  
   def new
   end
 
@@ -8,14 +12,14 @@ class ApplicationsController < ApplicationController
   end
 
   def create
-    Application.create!(applications_params)
+    @application = Application.create!(applications_params)
 
-    redirect_to "/application/:id"
+    redirect_to "/applications/#{@application.id}"
   end
 
   private
 
   def applications_params
-    params_permit(:name, :street_address, :city, :state, :zip_code, :description, :status)
+    params.permit(:name, :street_address, :city, :state, :zip_code, :description) # Got rid of :status temporarily, not sure why
   end
 end
