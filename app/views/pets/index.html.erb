@@ -1,11 +1,13 @@
-<h1>All pets</h1>
+<h1>All Pets</h1>
 
 <%= form_with url: "/pets", method: :get, local: true do |f| %>
   <%= f.label :search %>
   <%= f.text_field :search %>
   <%= f.submit "Search" %>
 <% end %>
-
+<br>
+<%= link_to "Start Application", "/applications/new",
+    data:{turbo_method: :get} %>
 
 <% @pets.each do |pet| %>
   <h3><%= pet.name %></h3>
