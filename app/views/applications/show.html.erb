@@ -1,18 +1,23 @@
-<h1><%= @application.id %></h1>
+<h1>Application #<%= @application.id %></h1>
+<h3> Application Status: <%= @application.status %> </h3>
 
-<h3>Applicant name: <%= @application.name %></h3>
-<p>Address: <%= @application.street_address %></p>
-<p>City: <%= @application.city %></p>
-<p>State: <%= @application.state %></p>
-<p>Zip: <%= @application.zip_code %></p><br>
+<br>
 
-<h3>Why this home will be a home for the pets</h3>
-<p><%= @application.description %></p>
-<h3>Names of pets applying for:</h3>
-<% @app.each do |pet|  %>
-<%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
-<% end %>
+<h3>Applicant Name: <%= @application.name %></h3>
 
-<h3>Application Status:</h3>
-<%= @application.status %>
+<p> Applicant's Address: 
+    <%= @application.street_address %>,
+    <%= @application.city %>,
+    <%= @application.state %>
+    <%= @application.zip_code %> </p>
+
+<h3> Why will this home be a good home for the pet(s)? </h3>
+<p> <%= @application.description %> </p>
+
+<h3> Pets Being Applied For: </h3>
+<ul>
+    <% @app.each do |pet| %>
+    <li> <%= link_to "#{pet.name}", "/pets/#{pet.id}" %> </li>
+    <% end %>
+</ul>
 

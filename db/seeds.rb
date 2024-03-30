@@ -32,16 +32,22 @@ puts "Pets Created"
 
 puts "Creating Applications"
 sleep(1)
-Application.create!(name: "John Wing", street_address: "1234 Long St.", city: "Star", state: "CA", zip_code: "12545", description: "I love dogs always", status: "In Progress")
-Application.create!(name: "Sarah Foster", street_address: "123334 Apple St.", city: "Vegas", state: "NV", zip_code: "90042", description: "I have two dogs already", status: "Accepted")
-Application.create!(name: "Michael Jordan", street_address: "559 Strawberry Ln.", city: "Eugene", state: "OR", zip_code: "76851", description: "I foster puppies", status: "Pending")
-puts "Applications created"
+Application.create!(name: "John Wing", street_address: "1234 Long St.", city: "Star", state: "CA", zip_code: "12545", description: "I have always loved dogs and would like to adopt one!", status: "In Progress")
+Application.create!(name: "Sarah Foster", street_address: "123334 Apple St.", city: "Vegas", state: "NV", zip_code: "90042", description: "I have two dogs already and they need another playmate.", status: "Accepted")
+Application.create!(name: "Michael Jordan", street_address: "559 Strawberry Ln.", city: "Eugene", state: "OR", zip_code: "76851", description: "I foster puppies!", status: "Pending")
+Application.create!(name: "Kurt Russell", street_address: "152 Bowery St.", city: "New York", state: "NY", zip_code: "42511", description: "I am crazy!", status: "Rejected")
+puts "Applications Created"
 
 puts "Linking Pets to Applications"
 sleep(1)
-ApplicationPet.create!(pet_id: 1, application_id: 2)
-ApplicationPet.create!(pet_id: 9, application_id: 3)
 ApplicationPet.create!(pet_id: 7, application_id: 1)
 ApplicationPet.create!(pet_id: 4, application_id: 1)
+ApplicationPet.create!(pet_id: 1, application_id: 1)
+ApplicationPet.create!(pet_id: 2, application_id: 2)
 ApplicationPet.create!(pet_id: 3, application_id: 2)
-puts "Applications linked"
+ApplicationPet.create!(pet_id: 9, application_id: 2)
+ApplicationPet.create!(pet_id: 1, application_id: 3)
+ApplicationPet.create!(pet_id: 7, application_id: 3)
+ApplicationPet.create!(pet_id: 4, application_id: 4)
+ApplicationPet.create!(pet_id: 9, application_id: 4)
+puts "Applications Linked"
