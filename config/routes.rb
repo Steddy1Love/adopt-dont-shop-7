@@ -43,5 +43,4 @@ Rails.application.routes.draw do
   post "/applications", to: "applications#create"
 
   get "/admin/shelters", to: "admin#index"
-
 end
