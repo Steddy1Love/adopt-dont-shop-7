@@ -1,4 +1,7 @@
 <h1>Application #<%= @application.id %></h1>
+<h3> Application Status: <%= @application.status %> </h3>
+
+<br>
 
 <h3>Applicant Name: <%= @application.name %></h3>
 
@@ -17,7 +20,4 @@
     <li> <%= link_to "#{pet.name}", "/pets/#{pet.id}" %> </li>
     <% end %>
 </ul>
-
-<h3> Application Status: </h3>
-<%= @application.status %>
 

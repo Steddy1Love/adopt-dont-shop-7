@@ -20,6 +20,6 @@ class ApplicationsController < ApplicationController
   private
 
   def applications_params
-    params.permit(:name, :street_address, :city, :state, :zip_code, :description) # Got rid of :status temporarily, not sure why
+    params.permit(:name, :street_address, :city, :state, :zip_code, :description, :status)
   end
 end
