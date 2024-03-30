@@ -47,7 +47,7 @@ ApplicationPet.create!(pet_id: 2, application_id: 2)
 ApplicationPet.create!(pet_id: 3, application_id: 2)
 ApplicationPet.create!(pet_id: 9, application_id: 2)
 ApplicationPet.create!(pet_id: 1, application_id: 3)
-ApplicationPet.create!(pet_id: 9, application_id: 3)
+ApplicationPet.create!(pet_id: 7, application_id: 3)
 ApplicationPet.create!(pet_id: 4, application_id: 4)
 ApplicationPet.create!(pet_id: 9, application_id: 4)
 puts "Applications Linked"
