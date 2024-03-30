@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-# rails db:{drop,create,migrate,seed} 
+# rails db:{drop,create,migrate,seed}
 
 puts "Creating Shelters"
 sleep(1)
