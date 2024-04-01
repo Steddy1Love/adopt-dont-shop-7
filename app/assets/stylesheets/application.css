@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+
+ .admin_text {
+    color: aliceblue;
+    text-decoration: none;
+ }
+
+ #admin_link {
+    background-color: black;
+    text-align: center;
+    padding: 2px;
+ }
