@@ -13,6 +13,10 @@
  *= require_tree .
  *= require_self
  */
+ 
+ html {
+    scrollbar-gutter: stable;
+}
 
  .admin_text {
     color: aliceblue;
