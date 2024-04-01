@@ -33,7 +33,7 @@ RSpec.describe "application creation page" do
     xit 'will error out when create form incorrectly filled out' do
         visit "/applications/new"
 
-        # no state
+        # no state, but test fails because of validations
         fill_in "name", with: "Grant"
         fill_in "street_address", with: "1234 Corner Lane"
         fill_in "city", with: "Longmont"
