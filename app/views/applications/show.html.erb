@@ -21,3 +21,12 @@
     <% end %>
 </ul>
 
+<h3>"Add a Pet to this Application"</h3>
+<%= form_with url: "/applications/#{@application.id}?search", method: :get, data: { turbo: false } do |form| %>
+    <%= form.label :pet_name, "Pet Name:" %>
+    <%= text_field_tag :pet_name, params[:query] %><br>
+    <%= form.submit 'Search by Pet Name' %>
+<% end %>
+
+
+
