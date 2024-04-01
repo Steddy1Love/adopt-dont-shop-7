@@ -89,12 +89,20 @@ RSpec.describe "applications show page" do
     describe 'user story 5' do
         it 'has a button to add a pet to an application after searching by name' do
             visit new_application_path
+ 
+            fill_in 'pet_name', with: 'Bear'
+            click_on 'Search by Pet Name'
 
+            expect(page).to have_button('Add Pet to Application')
         end
     
         it 'adds a pet to an application and redirects to application show page with new pet added' do
             visit new_application_path
+ 
+            fill_in 'pet_name', with: 'Bear'
+            click_on 'Search by Pet Name'
 
+            expect(current_path).to eq show_application_path
         end
     end
 end
