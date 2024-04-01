@@ -8,7 +8,9 @@ class ApplicationsController < ApplicationController
 
   def show
     @application = Application.find(params[:id])
-    @app = Application.unique_list_pets(@application.id)
+    @app = Application.unique_list_pets(@application.id)\
+
+    @pets = Pet.search(params[:query])
   end
 
   def create
