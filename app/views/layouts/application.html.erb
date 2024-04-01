@@ -11,6 +11,13 @@
   </head>
 
   <body>
+
+    <div id="admin_link">
+        <p><a class="admin_text" href="/admin">Admin Login</a></p>
+    </div>
+
+    <br>
+
   <% flash.each do |type, msg| %>
     <div>
       <%= msg %>
@@ -23,5 +30,6 @@
       <p><%= link_to "Veterinary Offices", "/veterinary_offices" %></p>
     </section>
     <%= yield %>
+
   </body>
 </html>
