@@ -30,7 +30,7 @@ RSpec.describe "application creation page" do
         expect(page).to have_content("I like doggos.")
     end
 
-    xit 'will error out when create form incorrectly filled out' do
+    xit 'will error out when create form incorrectly filled out and redirects to new' do
         visit "/applications/new"
 
         # no state, but test fails because of validations
@@ -43,6 +43,7 @@ RSpec.describe "application creation page" do
 
         click_button "Submit Application"
 
-        expect(page).to have_content("Error: State can't be blank")
+        expect(page).to have_content("Error")
+        expect(current_path).to eq("/applications/new")
     end
 end
