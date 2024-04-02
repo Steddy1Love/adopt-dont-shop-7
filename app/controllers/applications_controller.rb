@@ -25,7 +25,7 @@ class ApplicationsController < ApplicationController
       if @application.save 
         redirect_to "/applications/#{@application.id}"
     else       
-        flash.now[:alert] = "Error: #{error_message(@application.errors)}"
+        flash[:notice] = "Error: #{error_message(@application.errors)}"
         redirect_to "/applications/new"
     end
   end
