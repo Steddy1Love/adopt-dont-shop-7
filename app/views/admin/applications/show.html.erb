@@ -1,0 +1,23 @@
+<h1>Application #<%= "#{@application.id}" %></h3>
+
+<h2>Applicant name: <%= @application.name %></h2><br>
+<p>Address: <%= @application.street_address %></p>
+<p>City: <%= @application.city %></p>
+<p>State: <%= @application.state %></p>
+<p>Zip: <%= @application.zip_code %></p><br>
+
+<h3>Why this pet will fit in your home:</h3>
+<p><%= @application.description %></p>
+
+<h3> Pets Being Applied For: </h3>
+<ul>
+    <% @pets.each do |pet| %>
+    <li> <%= link_to "#{pet.name}", "/pets/#{pet.id}" %> </li>
+      <% if @application.status != "Accepted" %>
+        <%= button_to "Accepted", "/application/#{@application.id}", method: :patch %>
+      <% else %>
+        <li>Approved</li>
+      <% end %>
+    <% end %>
+</ul>
+
