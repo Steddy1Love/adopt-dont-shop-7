@@ -12,4 +12,9 @@ class Application < ApplicationRecord
   def self.unique_list_pets(id)
     Pet.joins(:applications).distinct.where("application_id = ?", id)
   end
+
+  def add_pet(pet_id)
+    pet = Pet.find(pet_id)
+    self.pets << pet
+  end
 end
