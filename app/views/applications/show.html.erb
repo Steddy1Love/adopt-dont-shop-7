@@ -17,7 +17,7 @@
 
 <h3>Pets Being Applied For:</h3>
 <ul>
-  <% @app.each do |pet| %>
+  <% @pets.each do |pet| %>
     <li><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></li>
   <% end %>
 </ul>
@@ -29,9 +29,9 @@
   <%= form.submit 'Search by Pet Name' %>
 <% end %>
 
-<% if @pets.present? %>
+<% if @pets2.present? %>
   <ol>
-    <% @pets.each do |pet| %>
+    <% @pets2.each do |pet| %>
       <li><%= pet.name %></li>
       <ul>
         <li>Breed: <%= pet.breed %></li>

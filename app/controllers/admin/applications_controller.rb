@@ -9,7 +9,7 @@ class Admin::ApplicationsController < ApplicationController
   end
 
   def update
-    # @application_approve = Application.approve_app(params[:id])
+     binding.pry
     if params[:approved_pet].present?
       pet_id = params[:approved_pet]
       ApplicationPet.change_status_to_approved(@application.id, pet_id)

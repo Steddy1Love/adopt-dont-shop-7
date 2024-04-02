@@ -14,9 +14,8 @@
     <% @pets.each do |pet| %>
     <li> <%= link_to "#{pet.name}", "/pets/#{pet.id}" %> </li>
       <% if @application.status != "Accepted" %>
-        <%= button_to "Accepted", "/application/#{@application.id}", method: :patch %>
-      <% else %>
-        <li>Approved</li>
+        <%= link_to "Accept", "/admin/applications/#{@application.id}", method: :patch %>
+        <%= link_to "Reject", "/admin/applications/#{@application.id}", method: :patch %>
       <% end %>
     <% end %>
 </ul>

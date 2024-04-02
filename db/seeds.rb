@@ -12,7 +12,7 @@ Shelter.create!(name: "Parker Animal Shelter", city: "Parker", rank: 4, foster_p
 Shelter.create!(name: "Littleton Animal Shelter", city: "Littleton", rank: 3, foster_program: true)
 Shelter.create!(name: "Denver Animal Shelter", city: "Denver", rank: 1, foster_program: true)
 Shelter.create!(name: "Boulder Animal Shelter", city: "Boulder", rank: 2, foster_program: true)
-puts " - Done"
+
 
 Pet.create!(name: "Bear", age: 4, breed: "Malamute", adoptable: true, shelter_id: 2)
 Pet.create!(name: "Max", age: 8, breed: "Siberian Husky", adoptable: true, shelter_id: 1)
@@ -30,14 +30,14 @@ Application.create!(name: "Sarah Foster", street_address: "123334 Apple St.", ci
 Application.create!(name: "Michael Jordan", street_address: "559 Strawberry Ln.", city: "Eugene", state: "OR", zip_code: "76851", description: "I foster puppies!", status: "Pending")
 Application.create!(name: "Kurt Russell", street_address: "152 Bowery St.", city: "New York", state: "NY", zip_code: "42511", description: "I am crazy!", status: "Rejected")
 
-ApplicationPet.create!(pet_id: 7, application_id: 1)
-ApplicationPet.create!(pet_id: 4, application_id: 1)
-ApplicationPet.create!(pet_id: 1, application_id: 1)
-ApplicationPet.create!(pet_id: 2, application_id: 2)
-ApplicationPet.create!(pet_id: 3, application_id: 2)
-ApplicationPet.create!(pet_id: 9, application_id: 2)
-ApplicationPet.create!(pet_id: 1, application_id: 3)
-ApplicationPet.create!(pet_id: 7, application_id: 3)
-ApplicationPet.create!(pet_id: 4, application_id: 4)
-ApplicationPet.create!(pet_id: 9, application_id: 4)
+ApplicationPet.create!(pet_id: 7, application_id: 1, status: "In Progress" )
+ApplicationPet.create!(pet_id: 4, application_id: 1, status: "In Progress" )
+ApplicationPet.create!(pet_id: 1, application_id: 1, status: "In Progress" )
+ApplicationPet.create!(pet_id: 2, application_id: 2, status: "In Progress" )
+ApplicationPet.create!(pet_id: 3, application_id: 2, status: "In Progress" )
+ApplicationPet.create!(pet_id: 9, application_id: 2, status: "In Progress" )
+ApplicationPet.create!(pet_id: 1, application_id: 3, status: "In Progress" )
+ApplicationPet.create!(pet_id: 7, application_id: 3, status: "In Progress" )
+ApplicationPet.create!(pet_id: 4, application_id: 4, status: "Rejected" )
+ApplicationPet.create!(pet_id: 9, application_id: 4, status: "Rejected" )
 
