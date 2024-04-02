@@ -12,4 +12,9 @@ class Application < ApplicationRecord
   def change_status(new_status)
     self.update(new_status)
   end
+
+  def add_pet(pet_id)
+    pet = Pet.find(pet_id)
+    self.pets << pet
+  end
 end

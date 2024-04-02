@@ -25,11 +25,17 @@ RSpec.describe "application creation page" do
 
         click_button "Submit Application"
 
-        save_and_open_page
-
         expect(page).to have_content("Grant")
         expect(page).to have_content("1234 Corner Lane, Longmont, CO 808025")
         expect(page).to have_content("I like doggos.")
     end
 
+    it 'will error out when create form incorrectly filled out and redirects to new' do
+        visit "/applications/new"
+
+        click_button 'Submit Application'
+
+        expect(page).to have_content("Error")
+        expect(current_path).to eq("/applications/new")
+    end
 end
