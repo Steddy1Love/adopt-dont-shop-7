@@ -41,7 +41,6 @@
           <%= form_with url: "/applications/#{@application.id}", method: :post do |form| %>
             <%= form.hidden_field :add_pet, value: pet.id  %>
             <%= form.submit "Add Pet to this Application" %>
-
           <% end %>
       <% end %>
     </ol>

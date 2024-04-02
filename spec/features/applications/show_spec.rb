@@ -49,14 +49,14 @@ RSpec.describe "applications show page" do
 
             fill_in "search", with: "Leo"
             click_button 'Search by Pet Name'
-save_and_open_page
+
             expect(page).to have_content("Leo") 
             expect(page).to have_button("Add Pet to this Application")
             expect(current_path).to eq "/applications/#{@new_application.id}"
         end
     
         # User story 9
-        xit 'can search case insensitive' do
+        it 'can search case insensitive' do
             visit "/applications/#{@new_application.id}"
 
             fill_in 'search', with: 'LeO'
@@ -68,7 +68,7 @@ save_and_open_page
         end
     
         # User story 8
-        xit 'can search with a partial query' do
+        it 'can search with a partial query' do
             visit "/applications/#{@new_application.id}"
 
             fill_in 'search', with: 'Le'
