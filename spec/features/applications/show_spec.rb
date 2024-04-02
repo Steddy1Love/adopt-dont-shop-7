@@ -75,16 +75,18 @@ RSpec.describe "applications show page" do
             click_on 'Search by Pet Name'
 
             expect(page).to have_content("Leo")
+            expect(page).to have_button('Add Pet to this Application')
             expect(page).to have_button('Search by Pet Name')
             expect(current_path).to eq "/applications/#{@new_application.id}"
         end
     end
     
-    xdescribe 'user story 5' do
+    describe 'user story 5' do
         before :each do
             @new_shelter = Shelter.create!(name: "Parker Animal Shelter", city: "Parker", rank: 4, foster_program: false)
             @pet_1 = Pet.create!(name: "Bear", age: 4, breed: "Malamute", adoptable: true, shelter_id: @new_shelter.id)
             @pet_2 = Pet.create!(name: "Max", age: 8, breed: "Siberian Husky", adoptable: true, shelter_id: @new_shelter.id)
+            @pet_3 = Pet.create!(name: "Leo", age: 3, breed: "Golden Retriever", adoptable: true, shelter_id: @new_shelter.id)
             @new_application = Application.create!(name: "John Wing", street_address: "1234 Long St.", city: "Star", state: "CA", zip_code: "12545", description: "I have always loved dogs and would like to adopt one!", status: "In Progress")
             ApplicationPet.create!(pet_id: @pet_1.id, application_id: @new_application.id)
         end
@@ -92,27 +94,28 @@ RSpec.describe "applications show page" do
         it 'has a button to add a pet to an application after searching by name' do
             visit "/applications/#{@new_application.id}"
  
-            fill_in 'search', with: 'Bear'
+            fill_in 'search', with: 'Max'
             click_button 'Search by Pet Name'
 
             expect(page).to have_button('Search by Pet Name')
-            expect(page).to have_content("Bear")
+            expect(page).to have_content("Max")
+            expect(page).to have_button('Add Pet to this Application')
+            expect(page).to_not have_content("Leo")
         end
     
         it 'adds a pet to an application and redirects to application show page with new pet added' do
             visit "/applications/#{@new_application.id}"
  
-            fill_in 'pet_name', with: 'Be'
+            fill_in 'search', with: 'Max'
             click_button 'Search by Pet Name'
 
             expect(current_path).to eq "/applications/#{@new_application.id}"
-            expect(page).to have_content("Bear")
+            expect(page).to have_content("Max")
         
             click_button 'Add Pet to this Application'
 
-            expect(page).to have_content(@pet_1.name)
-            expect(page).to have_content(@pet_1.breed)
-            expect(page).to have_content(@pet_1.age)
+            expect(page).to have_content(@pet_2.name)
+            expect(@new_application.pets).to eq([@pet_1, @pet_2])
         end
     end
 end

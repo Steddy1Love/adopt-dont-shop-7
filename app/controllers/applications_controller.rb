@@ -9,11 +9,13 @@ class ApplicationsController < ApplicationController
   def show
     @application = Application.find(params[:id])
     @app = Application.unique_list_pets(@application.id)
+    @pets = Pet.search(params[:search]) if params[:search].present?
   
-    if params[:search].present?
-      @pets = Pet.search(params[:search])
-    else
-      @pets = []
+    if params[:add_pet].present?
+      pet_id = params[:add_pet]
+      @application.add_pet(pet_id)
+
+      redirect_to show_application_path(@application)
     end
   end
   
