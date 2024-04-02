@@ -8,10 +8,15 @@ class ApplicationsController < ApplicationController
 
   def show
     @application = Application.find(params[:id])
-    @app = Application.unique_list_pets(@application.id)\
-
-    @pets = Pet.search(params[:query])
+    @app = Application.unique_list_pets(@application.id)
+  
+    if params[:search].present?
+      @pets = Pet.search(params[:search])
+    else
+      @pets = []
+    end
   end
+  
 
   def create
     @application = Application.new(application_params)
