@@ -13,7 +13,6 @@ Shelter.create!(name: "Littleton Animal Shelter", city: "Littleton", rank: 3, fo
 Shelter.create!(name: "Denver Animal Shelter", city: "Denver", rank: 1, foster_program: true)
 Shelter.create!(name: "Boulder Animal Shelter", city: "Boulder", rank: 2, foster_program: true)
 
-
 Pet.create!(name: "Bear", age: 4, breed: "Malamute", adoptable: true, shelter_id: 2)
 Pet.create!(name: "Max", age: 8, breed: "Siberian Husky", adoptable: true, shelter_id: 1)
 Pet.create!(name: "Leo", age: 3, breed: "Golden Retriever", adoptable: true, shelter_id: 4)
