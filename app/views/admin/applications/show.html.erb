@@ -12,13 +12,16 @@
 <h3> Pets Being Applied For: </h3>
 
 <ul>
-  <% @pets.each do |pet| %>
-    <li> <%= link_to "#{pet.name}", "/pets/#{pet.id}" %> </li>
-    
-        <%= button_to "Approve Pet", "/admin/applications/#{@application.id}", method: :patch, params: {approved_pet: pet.id} %>
-        <%= button_to "Reject Pet", "/admin/applications/#{@application.id}", method: :patch, params: {rejected_pet: pet.id} %>  
-
-    <br>
+  <% @application_pets.each do |app_pet| %>
+    <li> <%= link_to "#{app_pet.pet.name}", "/pets/#{app_pet.pet_id}" %> </li>
+      <% if app_pet.status != "Approved" && app_pet.status != "Rejected" %>
+        <%= button_to "Approve Pet", "/admin/applications/#{@application.id}", method: :patch, params: {approved_pet: app_pet.pet_id} %>
+        <%= button_to "Reject Pet", "/admin/applications/#{@application.id}", method: :patch, params: {rejected_pet: app_pet.pet_id} %> 
+      <% elsif app_pet.status == "Approved" %>
+        <strong>Already Approved!</strong>
+      <% elsif app_pet.status == "Rejected" %> 
+        <strong>Denied Application.</strong>
+      <% end %><br>
   <% end %>
 </ul>
 
