@@ -9,9 +9,9 @@ class Application < ApplicationRecord
     Pet.joins(application_pets: {application: :shelter}).distinct
   end
 
-  def change_status(new_status)
-    self.update(new_status)
-  end
+#   def change_status(new_status)
+#     self.update(new_status)
+#   end
 
   def add_pet(pet_id)
     pet = Pet.find(pet_id)
