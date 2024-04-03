@@ -7,8 +7,7 @@ class Admin::ApplicationsController < ApplicationController
     @application_pets = []
     @application = Application.find(params[:id])
     @pets = @application.pets
-    @pets.each{|pet|
-     binding.pry @application_pets << ApplicationPet.find_by(pet_id: pet.id, application_id: @application.id)}
+    @pets.each{|pet| binding.pry @application_pets << ApplicationPet.find_by(pet_id: pet.id, application_id: @application.id)}
   end
 
   def update
