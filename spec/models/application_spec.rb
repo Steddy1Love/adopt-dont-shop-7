@@ -29,19 +29,19 @@ RSpec.describe Application, type: :model do
     end
   end
 
-  it '#add_pet' do
-    shelter = Shelter.create!(name: "Parker Animal Shelter", city: "Parker", rank: 4, foster_program: false)
-    pet1 = Pet.create!(name: "Bear", age: 4, breed: "Malamute", adoptable: true, shelter_id: shelter.id)
-    pet2 = Pet.create!(name: "Max", age: 8, breed: "Siberian Husky", adoptable: true, shelter_id: shelter.id)
-    pet3 = Pet.create!(name: "Leo", age: 3, breed: "Golden Retriever", adoptable: true, shelter_id: shelter.id)
-    app1 = Application.create!(name: "John Wing", street_address: "1234 Long St.", city: "Star", state: "CA", zip_code: "12545", description: "I have always loved dogs and would like to adopt one!", status: "In Progress")
+  describe 'instance methods' do
+    it '#add_pet' do
+        shelter = Shelter.create!(name: "Parker Animal Shelter", city: "Parker", rank: 4, foster_program: false)
+        pet1 = Pet.create!(name: "Bear", age: 4, breed: "Malamute", adoptable: true, shelter_id: shelter.id)
+        pet2 = Pet.create!(name: "Max", age: 8, breed: "Siberian Husky", adoptable: true, shelter_id: shelter.id)
+        pet3 = Pet.create!(name: "Leo", age: 3, breed: "Golden Retriever", adoptable: true, shelter_id: shelter.id)
+        app1 = Application.create!(name: "John Wing", street_address: "1234 Long St.", city: "Star", state: "CA", zip_code: "12545", description: "I have always loved dogs and would like to adopt one!", status: "In Progress")
 
-    app1.add_pet(pet1.id)
-    app1.add_pet(pet2.id)
-    app1.add_pet(pet3.id)
+        app1.add_pet(pet1.id)
+        app1.add_pet(pet2.id)
+        app1.add_pet(pet3.id)
 
-    expect(app1.pets).to eq([pet1, pet2, pet3])
+        expect(app1.pets).to eq([pet1, pet2, pet3])
+    end    
   end
-
-
 end

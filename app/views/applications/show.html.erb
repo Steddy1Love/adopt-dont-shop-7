@@ -1,5 +1,5 @@
 <h1>Application #<%= @application.id %></h1>
-<h3>Application Status: <%= @application.status %></h3>
+<h3>Application Status: <span class="status"><%= @application.status %></span> </h3>
 
 <br>
 
@@ -23,7 +23,7 @@
 </ul>
 
 <div id="add_pet">
-<h3>"Add a Pet to this Application"</h3>
+<h3> Add a Pet to this Application </h3>
     <%= form_with url: "/applications/#{@application.id}?search", method: :get, data: { turbo: false }, local: true do |form| %>
     <%= form.label :search %>
     <%= text_field_tag :search, params[:search] %><br>
@@ -34,7 +34,7 @@
     <% if @pets2.present? %>
     <ol>
         <% @pets2.each do |pet| %>
-        <li><%= pet.name %></li>
+        <li><b> <%= pet.name %> </b></li>
         <ul>
             <li>Breed: <%= pet.breed %></li>
             <li>Age: <%= pet.age %></li>
@@ -43,7 +43,7 @@
             <%= form_with url: "/applications/#{@application.id}", method: :post do |form| %>
             <%= form.hidden_field :add_pet, value: pet.id %>
             <br>
-            <%= form.submit "Add Pet to this Application" %>
+            <%= form.submit "Add Pet to this Application" %> <br><br>
             <% end %>
         <% end %>
         <% end %>
@@ -52,3 +52,14 @@
     <p>Please search for a pet to add to this application.</p>
     <% end %>
 </div>
+
+<% if @pets.count >= 1 && @application.status == "In Progress" %>
+
+    <%= form_with url: "/applications/#{@application.id}", method: :patch, data: {turbo: false} do |form| %>
+        <h3> <%= form.label :description, "Please elaborate: Why will this home be a good home for the pet(s)?" %> </h3>
+        <%= form.text_area :description, placeholder: "#{@application.description}" %> <br>
+        <br>
+        <%= form.submit "Submit Application" %>  
+    <% end %>
+
+<% end %>

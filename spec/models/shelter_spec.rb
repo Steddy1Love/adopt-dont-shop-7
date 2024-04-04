@@ -17,11 +17,13 @@ RSpec.describe Shelter, type: :model do
     @shelter_1 = Shelter.create(name: "Aurora shelter", city: "Aurora, CO", foster_program: false, rank: 9)
     @shelter_2 = Shelter.create(name: "RGV animal shelter", city: "Harlingen, TX", foster_program: false, rank: 5)
     @shelter_3 = Shelter.create(name: "Fancy pets of Colorado", city: "Denver, CO", foster_program: true, rank: 10)
-
     @pet_1 = @shelter_1.pets.create(name: "Mr. Pirate", breed: "tuxedo shorthair", age: 5, adoptable: false)
     @pet_2 = @shelter_1.pets.create(name: "Clawdia", breed: "shorthair", age: 3, adoptable: true)
     @pet_3 = @shelter_3.pets.create(name: "Lucille Bald", breed: "sphynx", age: 8, adoptable: true)
     @pet_4 = @shelter_1.pets.create(name: "Ann", breed: "ragdoll", age: 5, adoptable: true)
+    @new_application = Application.create!(name: "John Wing", street_address: "1234 Long St.", city: "Star", state: "CA", zip_code: "12545", description: "I have always loved dogs and want more of them!", status: "Pending")
+    ApplicationPet.create!(pet_id: @pet_1.id, application_id: @new_application.id)
+    ApplicationPet.create!(pet_id: @pet_2.id, application_id: @new_application.id)
   end
 
   describe "class methods" do
@@ -40,6 +42,20 @@ RSpec.describe Shelter, type: :model do
     describe "#order_by_number_of_pets" do
       it "orders the shelters by number of pets they have, descending" do
         expect(Shelter.order_by_number_of_pets).to eq([@shelter_1, @shelter_3, @shelter_2])
+      end
+    end
+
+    describe "#with_admin" do
+      it "lists all shelters in reverse alphabetical order" do
+        expect(Shelter.with_admin).to be_a (Array)
+        expect(Shelter.with_admin[0]).to be_an_instance_of (Shelter)
+        expect(Shelter.with_admin[0].name).to eq("RGV animal shelter")
+      end
+    end
+
+    describe "#with_pending_apps" do
+      it "lists all shelters with pending applications" do
+        expect(Shelter.with_pending_apps).to eq([@shelter_1])
       end
     end
   end
