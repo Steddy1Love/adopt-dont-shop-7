@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   post 'applications/:id', to: 'applications#show', as: :add_pet_to_application
   get "/applications/:id", to: "applications#show", as: :show_application
   post "/applications", to: "applications#create"
+  patch "/applications/:id", to: "applications#update"
 
   get "/admin", to: "admin/admins#welcome"
 

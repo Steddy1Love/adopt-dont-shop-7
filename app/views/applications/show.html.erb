@@ -52,3 +52,16 @@
     <p>Please search for a pet to add to this application.</p>
     <% end %>
 </div>
+
+<% if @pets.count >= 1 && @application.status == "In Progress" %>
+
+<p> Hello! </p>
+
+    <%= form_with url: "/applications/#{@application.id}", method: :patch, data: {turbo: false} do |form| %>
+        <%= form.label :description, "Why would you make a good owner for the pet(s)?" %> <br>
+        <%= form.text_area :description %> <br>
+        <br>
+        <%= form.submit "Submit Application" %>  
+    <% end %>
+
+<% end %>

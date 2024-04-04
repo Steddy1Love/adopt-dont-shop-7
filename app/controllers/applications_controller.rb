@@ -11,6 +11,8 @@ class ApplicationsController < ApplicationController
     @pets = @application.pets
     @pets2 = Pet.search(params[:search]) if params[:search].present?
   
+    #binding.pry
+
     if params[:add_pet].present?
       pet_id = params[:add_pet]
       @application.add_pet(pet_id)
@@ -21,12 +23,19 @@ class ApplicationsController < ApplicationController
   
   def create
     @application = Application.new(application_params)
-    if @application.save 
-      redirect_to "/applications/#{@application.id}"
-    else       
-      flash[:notice] = "Error: #{error_message(@application.errors)}"
-      redirect_to "/applications/new"
-    end
+    @application.save
+    
+    redirect_to "/applications/#{@application.id}"
+  end
+
+  def update
+    @application = Application.find(params[:id])
+    @application.update({
+        description: params[:description],
+        status: "Pending"
+    })
+
+    redirect_to "/applications/#{@application.id}"
   end
 
   private
