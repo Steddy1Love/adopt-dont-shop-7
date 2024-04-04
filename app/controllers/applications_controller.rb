@@ -10,9 +10,6 @@ class ApplicationsController < ApplicationController
     @application = Application.find(params[:id])
     @pets = @application.pets
     @pets2 = Pet.search(params[:search]) if params[:search].present?
-  
-    #binding.pry
-
     if params[:add_pet].present?
       pet_id = params[:add_pet]
       @application.add_pet(pet_id)
@@ -23,9 +20,12 @@ class ApplicationsController < ApplicationController
   
   def create
     @application = Application.new(application_params)
-    @application.save
-    
-    redirect_to "/applications/#{@application.id}"
+    if @application.save 
+        redirect_to "/applications/#{@application.id}"
+    else
+        flash[:notice] = "Error: #{error_message(@application.errors)}"
+        redirect_to "/applications/new"
+    end
   end
 
   def update

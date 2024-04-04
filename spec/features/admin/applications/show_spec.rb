@@ -22,10 +22,7 @@ RSpec.describe "Admin Application Show Page", type: :feature do
       expect(page).to have_content("Application ##{@new_application_1.id}")
       expect(page).to have_content("#{@new_application_1.status}")
       expect(page).to have_content("Applicant Name: #{@new_application_1.name}")
-      expect(page).to have_content("Address: #{@new_application_1.street_address}")
-      expect(page).to have_content("City: #{@new_application_1.city}")
-      expect(page).to have_content("State: #{@new_application_1.state}")
-      expect(page).to have_content("Zip: #{@new_application_1.zip_code}")
+      expect(page).to have_content ("Applicant's Address: #{@new_application_1.street_address}, #{@new_application_1.city}, #{@new_application_1.state} #{@new_application_1.zip_code}")
       expect(page).to have_content("#{@pet_1.name}")
       expect(page).to have_content("#{@pet_2.name}")
     end
@@ -35,24 +32,24 @@ RSpec.describe "Admin Application Show Page", type: :feature do
 
       expect(page).to have_button("Approve Pet")
       expect(page).to have_button("Reject Pet")
-      expect(page).to_not have_content("Already Approved!")
+      expect(page).to_not have_content("Approved!")
       expect(page).to_not have_content("Denied Application.")
       
       click_button("Approve Pet", match: :first)
 
-      expect(page).to have_content("Already Approved!")
+      expect(page).to have_content("Approved!")
       expect(page).to have_button("Reject Pet")
       expect(page).to have_button("Approve Pet")
 
       visit "/admin/applications/#{@new_application_2.id}"
       expect(page).to have_button("Approve Pet")
       expect(page).to have_button("Reject Pet")
-      expect(page).to_not have_content("Already Approved!")
+      expect(page).to_not have_content("Approved!")
       expect(page).to_not have_content("Denied Application.")
 
       click_button("Approve Pet", match: :first)
 
-      expect(page).to have_content("Already Approved!")
+      expect(page).to have_content("Approved!")
       expect(page).to have_button("Reject Pet")
       expect(page).to have_button("Approve Pet")
     end

@@ -23,8 +23,29 @@
     text-decoration: none;
  }
 
+ .admin_text:hover {
+    color: rgb(105, 238, 248);
+    transition-duration: 1s;
+ }
+
  #admin_link {
     background-color: black;
     text-align: center;
     padding: 2px;
+ }
+
+ .status {
+    background-color: rgb(30, 30, 30);
+    color: rgb(0, 255, 89);    
+    padding: 4px 10px;
+    font-family: monospace;
+    border-radius: 6px;
+ }
+
+.status_2 {
+    color: rgb(255, 0, 255);    
+ }
+
+ #flash_message {
+    color: rgb(255, 0, 0); 
  }
