@@ -42,6 +42,20 @@ RSpec.describe Shelter, type: :model do
         expect(Shelter.order_by_number_of_pets).to eq([@shelter_1, @shelter_3, @shelter_2])
       end
     end
+
+    describe "#with_admin" do
+      it "lists all shelters in reverse alphabetical order" do
+        expect(Shelter.with_admin).to be_a (Array)
+        expect(Shelter.with_admin[0]).to be_an_instance_of (Shelter)
+        expect(Shelter.with_admin[0].name).to eq("RGV animal shelter")
+      end
+    end
+
+    describe "#with_pending_apps" do
+      it "lists all shelters with pending applications" do
+        expect(Shelter.with_pending_apps).to eq([])
+      end
+    end
   end
 
   describe "instance methods" do
