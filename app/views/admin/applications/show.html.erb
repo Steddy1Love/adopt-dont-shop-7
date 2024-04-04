@@ -16,6 +16,7 @@
 <p><%= @application.description %></p><br>
 
 <h3> Pets Being Applied For: </h3>
+
 <ul>
   <% @application_pets.each do |app_pet| %>
     <li> <%= link_to "#{app_pet.pet.name}", "/pets/#{app_pet.pet_id}" %> </li>
@@ -28,5 +29,4 @@
         <strong>Denied Application.</strong>
       <% end %><br>
   <% end %>
-</ul>
-
+</ul
