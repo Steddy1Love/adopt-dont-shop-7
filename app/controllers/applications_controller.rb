@@ -8,8 +8,8 @@ class ApplicationsController < ApplicationController
 
   def show
     @application = Application.find(params[:id])
-    @app = Application.unique_list_pets(@application.id)
-    @pets = Pet.search(params[:search]) if params[:search].present?
+    @pets = @application.pets
+    @pets2 = Pet.search(params[:search]) if params[:search].present?
   
     if params[:add_pet].present?
       pet_id = params[:add_pet]
@@ -19,14 +19,13 @@ class ApplicationsController < ApplicationController
     end
   end
   
-
   def create
     @application = Application.new(application_params)
-      if @application.save 
-        redirect_to "/applications/#{@application.id}"
+    if @application.save 
+      redirect_to "/applications/#{@application.id}"
     else       
-        flash[:notice] = "Error: #{error_message(@application.errors)}"
-        redirect_to "/applications/new"
+      flash[:notice] = "Error: #{error_message(@application.errors)}"
+      redirect_to "/applications/new"
     end
   end
 
@@ -34,7 +33,7 @@ class ApplicationsController < ApplicationController
 
   def application_params
     params
-        .permit(:name, :street_address, :city, :state, :zip_code, :description)
-        .with_defaults(status: "In Progress")
+      .permit(:name, :street_address, :city, :state, :zip_code, :description)
+      .with_defaults(status: "In Progress")
   end
 end
